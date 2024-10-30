@@ -8,8 +8,8 @@ public class JugadorTest {
 
     @Test
     public void testCreacionJugadorConNombreColor() {
-        Jugador jugador = new Jugador("Luis", "rojo");
-        assertEquals("Luis", jugador.getNom());
-        assertEquals("Rojo", jugador.getColor());
+        Jugador jugador = new Jugador("pablo", "rojo");
+        assertEquals("pablo", jugador.getNombre());
+        assertEquals("rojo", jugador.getColor());
     }
 }
