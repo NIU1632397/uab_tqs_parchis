@@ -40,27 +40,65 @@ public class JugadorTest {
     }
 
     @Test
+    void testCambiarTurnoConEstadoIgualLanzaExcepcion() {
+        jugador.setTurno(false);
+        Exception exception = assertThrows(IllegalStateException.class, () -> jugador.setTurno(false));
+        assertEquals("El jugador ya tiene el estado de turno especificado.", exception.getMessage());
+    }
+
+    @Test
     void testMoverFicha() {
-        Ficha ficha = jugador.getFichas()[0];
-        ficha.setHome(false);
-        ficha.mover(3); 
+        jugador.moverFicha(0, 3);
         assertEquals(3, ficha.getPos(), "La ficha debería estar en la posición 3 después de moverse");
     }
 
+    @Test
+    void testMoverFichaEnTurno() {
+        jugador.setTurno(true); // Activamos el turno del jugador
+
+        Ficha ficha = jugador.getFichas()[0];
+        ficha.setHome(false); // La ficha ha salido de casa
+        jugador.moverFicha(0, 3); // Movemos la ficha con índice 0, tres pasos
+        assertEquals(3, ficha.getPos(), "La ficha debería estar en la posición 3 después de moverse");
+    }
+
+    @Test
+    void testMoverFichaFueraDeTurnoLanzaExcepcion() {
+        Ficha ficha = jugador.getFichas()[0];
+        ficha.setHome(false); // La ficha ha salido de casa
+
+        Exception exception = assertThrows(IllegalStateException.class, () -> jugador.moverFicha(0, 3));
+        assertEquals("No es el turno del jugador.", exception.getMessage());
+    }
 
     // Faltaria mirar si la ficha esta en las ultimas casillas que no sean home
     @Test
     void testMoverFichaHome() {
+        jugador.setTurno(true); // Activamos el turno del jugador
         Ficha ficha = jugador.getFichas()[0];
-        ficha.mover(3); 
+
+        jugador.moverFicha(0, 3); // Estado default de la ficha --> Home: true
         assertEquals(0, ficha.getPos(), "La ficha no debería moverse ya que esta en home");
     }
 
     @Test
     void testMoverFichaFin() {
+        jugador.setTurno(true); // Activamos el turno del jugador
         Ficha ficha = jugador.getFichas()[0];
-        ficha.mover(3); 
-        assertEquals(0, ficha.getPos(), "La ficha no debería moverse ya que esta en fin");
+        ficha.setHome(false); // La ficha ha salido de casa
+        ficha.setFin(true);   // La ficha ha llegado a la meta
+
+        jugador.moverFicha(0, 3); 
+        assertEquals(0, ficha.getPos(), "La ficha no debería moverse ya que está en fin");
+    }
+
+    @Test
+    void testContarFichasEnFin() {
+        Ficha[] fichas = jugador.getFichas();
+        fichas[0].setFin(true);
+        fichas[1].setFin(true);
+
+        assertEquals(2, jugador.contarFichasEnFin(), "Debería haber 2 fichas en fin");
     }
 
     @Test
