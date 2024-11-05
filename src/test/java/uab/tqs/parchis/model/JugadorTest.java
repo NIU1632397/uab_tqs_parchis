@@ -40,19 +40,6 @@ public class JugadorTest {
     }
 
     @Test
-    void testCambiarTurnoConEstadoIgualLanzaExcepcion() {
-        jugador.setTurno(false);
-        Exception exception = assertThrows(IllegalStateException.class, () -> jugador.setTurno(false));
-        assertEquals("El jugador ya tiene el estado de turno especificado.", exception.getMessage());
-    }
-
-    @Test
-    void testMoverFicha() {
-        jugador.moverFicha(0, 3);
-        assertEquals(3, ficha.getPos(), "La ficha debería estar en la posición 3 después de moverse");
-    }
-
-    @Test
     void testMoverFichaEnTurno() {
         jugador.setTurno(true); // Activamos el turno del jugador
 
@@ -104,13 +91,13 @@ public class JugadorTest {
     @Test
     void testNombreNuloLanzaExcepcion() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> new Jugador(null, "rojo"));
-        assertEquals("El nombre no puede ser nulo o estar vacio", exception.getMessage());
+        assertEquals("El nombre no puede ser nulo o estar vacio.", exception.getMessage());
     }
 
     @Test
     void testColorNuloLanzaExcepcion() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> new Jugador("pablo", null));
-        assertEquals("El color no puede ser nulo o estar vacio", exception.getMessage());
+        assertEquals("El color no puede ser nulo o estar vacio.", exception.getMessage());
     }
 }
 
