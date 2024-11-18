@@ -3,12 +3,14 @@ package uab.tqs.parchis.model;
 import java.util.List;
 import java.util.ArrayList;
 
-public class CasillaCasa implements Casilla {
+public class CasillaNormal implements Casilla {
     private int numero;
+    private boolean bloqueado;
     private List<Ficha> fichas;
 
-    public CasillaCasa(int num) {
+    public CasillaNormal(int num) {
         this.numero = num;
+        this.bloqueado = false;
         this.fichas = new ArrayList<>();
     }
 
@@ -19,12 +21,12 @@ public class CasillaCasa implements Casilla {
 
     @Override
     public boolean getBloqueo() {
-        return false;
+        return this.bloqueado;
     }
 
     @Override
     public boolean getSeguro() {
-        return true;
+        return false;
     }
 
     @Override
@@ -35,10 +37,18 @@ public class CasillaCasa implements Casilla {
     @Override
     public void agregarFicha(Ficha ficha) {
         this.fichas.add(ficha);
+        
+        if (this.fichas.size() == 2) {
+            this.bloqueado = true;
+        }
     }
 
     @Override
     public void quitarFicha(Ficha ficha) {
         this.fichas.remove(ficha);
+
+        if (this.fichas.size() < 2) {
+            this.bloqueado = false;
+        }
     }
 }
