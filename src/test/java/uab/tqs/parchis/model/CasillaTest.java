@@ -35,4 +35,19 @@ public class CasillaTest  {
 
         assertTrue(casilla_casa.getFichas().isEmpty(), "no deberia haber ninguna ficha en la casilla");
     }
+
+    @Test
+    void testBloqueo() {
+        Ficha ficha1 = new Ficha();
+        Ficha ficha2 = new Ficha();
+
+        casilla_casa.agregarFicha(ficha1);
+        casilla_casa.agregarFicha(ficha2);
+
+        assertTrue(casilla_casa.getBloqueo(), "La casilla deberia estar bloqueada");
+
+        casilla_casa.quitarFicha(ficha2);
+
+        assertFalse(casilla_casa.getBloqueo(), "La casilla deberia estar desbloqueada");
+    }
 }
