@@ -22,4 +22,35 @@ public class Game {
         }
         jugadores.add(new Jugador(nombre, color));
     }
+
+    public List<Jugador> getJugadores() {
+        return jugadores;
+    }
+
+    public Tablero getTablero() {
+        return tablero;
+    }
+
+    public Dado getDado() {
+        return dado;
+    }
+
+    public Jugador getJugadorActual() {
+        return jugadores.get(turnoActual);
+    }
+
+    public void avanzarTurno() {
+        turnoActual = (turnoActual + 1) % jugadores.size();
+    }
+
+    public boolean esFinDelJuego() {
+        return jugadores.stream().anyMatch(jugador -> jugador.contarFichasEnFin() == 4);
+    }
+
+    public Jugador obtenerGanador() {
+        return jugadores.stream()
+                .filter(jugador -> jugador.contarFichasEnFin() == 4)
+                .findFirst()
+                .orElse(null);
+    }
 }
