@@ -43,6 +43,11 @@ public class Game {
         turnoActual = (turnoActual + 1) % jugadores.size();
     }
 
+    public int lanzarDado() {
+        int tirada = dado.tirar();
+        return tirada;
+    }
+
     public boolean esFinDelJuego() {
         return jugadores.stream().anyMatch(jugador -> jugador.contarFichasEnFin() == 4);
     }

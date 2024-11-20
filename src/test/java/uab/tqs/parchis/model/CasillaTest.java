@@ -59,6 +59,7 @@ public class CasillaTest  {
 
     @Test
     void testAgregarQuitar() {
+        // POSIBLE MOCK OBJECT AQUÍ
         Ficha ficha = new Ficha();
 
         // TEST CASILLA CASA
