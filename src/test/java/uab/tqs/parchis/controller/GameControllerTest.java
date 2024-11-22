@@ -18,7 +18,7 @@ public class GameControllerTest {
     @BeforeEach
     void setUp() {
         game = new Game();
-        game_controller = new GameController();
+        game_controller = new GameController(game);
         // game_view = mock(GameView.class);
     }
 
@@ -36,13 +36,13 @@ public class GameControllerTest {
     }
 
     @Test
-    void testTirarDado() {
+    void testLanzarDado() {
         String[] jugadores = {"Jugador 1", "Jugador 2"};
         String[] colores = {"Azul", "Amarillo"};
 
         game_controller.iniciarJuego(jugadores, colores);
 
-        int tirada = game_controller.tirarDado();
+        int tirada = game_controller.lanzarDado();
 
         assertTrue((tirada >= 0 && tirada <= 6), "El numero deberia estar entre 0 y 6");
     }
