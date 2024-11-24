@@ -107,6 +107,22 @@ public class CasillaNormal implements Casilla {
     }
 
     /**
+     * Devuelve una representación en texto de una casilla normal.
+     * 
+     * Precondiciones:
+     * - Ninguna.
+     * 
+     * Postcondiciones:
+     * - Devuelve un texto con el número de la casilla indicando que es una casilla normal.
+     * 
+     * @return Representación textual de la casilla normal.
+     */
+    @Override
+    public String toString() {
+        return "CasillaNormal (número: " + numero + ")";
+    }
+
+    /**
      * Agrega una ficha a la casilla.
      * 
      * Precondiciones:

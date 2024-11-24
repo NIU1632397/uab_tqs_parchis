@@ -117,6 +117,23 @@ public class CasillaSegura implements Casilla {
      * 
      * @param ficha Ficha a agregar.
      */
+
+    /**
+     * Devuelve una representación en texto de una casilla segura.
+     * 
+     * Precondiciones:
+     * - Ninguna.
+     * 
+     * Postcondiciones:
+     * - Devuelve un texto con el número de la casilla indicando que es una casilla segura.
+     * 
+     * @return Representación textual de la casilla segura.
+     */
+    @Override
+    public String toString() {
+        return "CasillaSegura (número: " + numero + ")";
+    }
+    
     @Override
     public void agregarFicha(Ficha ficha) {
         if (ficha == null) {

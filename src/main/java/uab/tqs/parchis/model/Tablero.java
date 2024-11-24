@@ -134,6 +134,36 @@ public class Tablero {
     }
 
     /**
+     * Devuelve una representación en texto del tablero, incluyendo las casillas
+     * principales y finales.
+     * 
+     * Precondiciones:
+     * - Ninguna.
+     * 
+     * Postcondiciones:
+     * - Devuelve un texto que describe el estado del tablero principal y del tablero final.
+     * 
+     * @return Representación textual del tablero.
+     */
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        // Representación del tablero principal
+        sb.append("Tablero Principal:\n");
+        for (Casilla casilla : tablero) {
+            sb.append(casilla.toString()).append("\n");
+        }
+    
+        // Representación del tablero final
+        sb.append("\nTablero Final:\n");
+        for (Casilla casilla : tablero_final) {
+            sb.append(casilla.toString()).append("\n");
+        }
+    
+        return sb.toString();
+    }
+
+    /**
      * Devuelve todas las casillas del tablero final.
      * 
      * Precondiciones:

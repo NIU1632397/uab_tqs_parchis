@@ -103,6 +103,22 @@ public class CasillaCasa implements Casilla {
     }
 
     /**
+     * Devuelve una representación en texto de una casilla casa.
+     * 
+     * Precondiciones:
+     * - Ninguna.
+     * 
+     * Postcondiciones:
+     * - Devuelve un texto con el número de la casilla indicando que es una casilla casa.
+     * 
+     * @return Representación textual de la casilla casa.
+     */
+    @Override
+    public String toString() {
+        return "CasillaCasa: Inicio (número: " + numero + ")";
+    }
+
+    /**
      * Agrega una ficha a la casilla.
      * 
      * Precondiciones:
