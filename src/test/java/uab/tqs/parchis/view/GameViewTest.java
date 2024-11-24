@@ -4,12 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import uab.tqs.parchis.model.Jugador;
 import uab.tqs.parchis.model.Tablero;
 
 public class GameViewTest {
@@ -43,10 +41,10 @@ public class GameViewTest {
     }
 
     @Test
-    void testActualizarTablero() {
+    void testMostrarTablero() {
         Tablero tablero = new Tablero();
 
-        game_view.actualizarTablero(tablero);
+        game_view.mostrarTablero(tablero);
 
         String salida = outputStream.toString();
         assertTrue(salida.contains("[Tablero actualizado]"), "No hay Tablero actualizado");

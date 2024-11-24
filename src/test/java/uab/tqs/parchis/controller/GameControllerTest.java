@@ -1,5 +1,6 @@
 package uab.tqs.parchis.controller;
 import uab.tqs.parchis.model.Game;
+import uab.tqs.parchis.view.GameView;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
@@ -12,14 +13,14 @@ import org.junit.jupiter.api.Test;
 public class GameControllerTest {
     private Game game;
     // DESCOMENTAR CUANDO SE IMPLEMENTE LA CLASE
-    // private GameView game_view;
+    private GameView game_view;
     private GameController game_controller;
 
     @BeforeEach
     void setUp() {
         game = new Game();
-        // game_view = mock(GameView.class);
-        game_controller = new GameController(game);
+        game_view = mock(GameView.class);
+        game_controller = new GameController(game, game_view);
     }
 
     @Test
@@ -32,7 +33,7 @@ public class GameControllerTest {
         assertEquals("Jugador 1", game.getJugadores().get(0).getNombre());
         assertEquals("Azul", game.getJugadores().get(0).getColor());
 
-        // verify(game_view).mostrarEstadoJuego("Juego inicializado correctamente.");
+        verify(game_view).mostrarMensaje("Juego inicializado correctamente.");
     }
 
     @Test
@@ -58,6 +59,6 @@ public class GameControllerTest {
 
         assertEquals("Jugador 2", game.getJugadorActual().getNombre());
 
-        // verify(game_view).mostrarMensaje("Turno avanzado. Ahora es el turno de: Jugador 2");
+        verify(game_view).mostrarMensaje("Turno avanzado. Ahora es el turno de: Jugador 2");
     }
 }
