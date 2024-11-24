@@ -115,7 +115,11 @@ public class CasillaCasa implements Casilla {
      */
     @Override
     public String toString() {
-        return "CasillaCasa: Inicio (número: " + numero + ")";
+        StringBuilder mensaje = new StringBuilder("CasillaCasa: Inicio (número: " + numero + "), Fichas: ");
+        for (Ficha ficha : this.fichas) {
+            mensaje.append(ficha.getName() + ", ");
+        }
+        return mensaje.toString();
     }
 
     /**

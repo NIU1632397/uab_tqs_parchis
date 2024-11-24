@@ -109,7 +109,7 @@ public class Tablero {
             throw new IllegalArgumentException("El número de casilla debe estar entre 1 y 68.");
         }
 
-        int[] casillasSeguras = {5, 12, 17, 24, 29, 36, 41, 48};
+        int[] casillasSeguras = {5, 12, 17, 22, 29, 34, 39, 46, 51, 56, 63, 68};
         for (int segura : casillasSeguras) {
             if (numero == segura) {
                 return true;

@@ -119,7 +119,11 @@ public class CasillaNormal implements Casilla {
      */
     @Override
     public String toString() {
-        return "CasillaNormal (número: " + numero + ")";
+        StringBuilder mensaje = new StringBuilder("CasillaNormal: (número: " + numero + "), Fichas: ");
+        for (Ficha ficha : this.fichas) {
+            mensaje.append(ficha.getName() + ", ");
+        }
+        return mensaje.toString();
     }
 
     /**

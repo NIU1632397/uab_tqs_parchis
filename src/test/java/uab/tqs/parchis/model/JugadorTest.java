@@ -21,9 +21,17 @@ public class JugadorTest {
 
     @Test
     void testIniciarConCuatroFichas() {
-        // assertEquals(4, jugador.getFichas().length(), "El jugador debe iniciar con 4 fichas");
+        // assertEquals(4, jugador.getFichas().length, "El jugador debe iniciar con 4 fichas");
         // Test no va ja que no hay instancias de fichas
         // deberiamos crear mock object para poder probar este test correctamente
+    }
+
+    @Test
+    void testNombreFichas() {
+        Ficha[] fichas = jugador.getFichas();
+        for (int i = 0; i < fichas.length; i++) {
+            assertEquals("rojo"+i, fichas[i].getName(), "El nombre de las fichas no es correcto");
+        }
     }
 
     @Test

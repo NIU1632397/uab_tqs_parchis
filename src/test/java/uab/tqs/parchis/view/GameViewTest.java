@@ -49,25 +49,14 @@ public class GameViewTest {
         game_view.actualizarTablero(tablero);
 
         String salida = outputStream.toString();
-        assertTrue(salida.contains("[Tablero actualizado]"));
-        assertTrue(salida.contains("Tablero Principal"));
-        assertTrue(salida.contains("Tablero Final"));
-        assertTrue(salida.contains("CasillaCasa"));
-        assertTrue(salida.contains("CasillaNormal"));
-        assertTrue(salida.contains("CasillaSegura"));
-        assertTrue(salida.contains("CasillaFinal"));
+        assertTrue(salida.contains("[Tablero actualizado]"), "No hay Tablero actualizado");
+        assertTrue(salida.contains("Tablero Principal"), "No hay tablero principal");
+        assertTrue(salida.contains("Tablero Final"), "No hay tablero final");
+        assertTrue(salida.contains("CasillaCasa"), "No hay casilla casa");
+        // Assert para poder visualizar el tablero
+        // assertEquals("", salida);
+        assertTrue(salida.contains("CasillaNormal"), "No hay casilla normal");
+        assertTrue(salida.contains("CasillaSegura"), "No hay casilla segura");
+        assertTrue(salida.contains("CasillaFinal"), "No hay casilla final");
     }
-
-    // @Test
-    // void testActualizarJugadores() {
-    //     Jugador jugador1 = new Jugador("Jugador 1", "amarillo");
-    //     Jugador jugador2 = new Jugador("Jugador 2", "azul");
-
-    //     game_view.actualizarJugadores(List.of(jugador1, jugador2));
-
-    //     // HACE FALTA AÑADIR LA FUNCION toString() A LA CLASE JUGADOR
-    //     String salida = outputStream.toString();
-    //     assertTrue(salida.contains("Jugador 1 (Color: amarillo)"));
-    //     assertTrue(salida.contains("Jugador 2 (Color: azul)"));
-    // }
 }

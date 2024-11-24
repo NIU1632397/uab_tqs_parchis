@@ -4,6 +4,7 @@ public class Ficha {
     private int pos;
     private boolean home;
     private boolean fin;
+    private String nombre;
 
     /**
      * Constructor por defecto: la ficha inicia en casa (home = true) y fuera de la meta (fin = false).
@@ -12,6 +13,13 @@ public class Ficha {
         this.pos = 0;
         this.home = true; 
         this.fin = false;
+    }
+
+    public Ficha(String nombre) {
+        this.pos = 0;
+        this.home = true; 
+        this.fin = false;
+        this.nombre = nombre;
     }
 
     /**
@@ -48,6 +56,10 @@ public class Ficha {
 
     public boolean isFin() {
         return fin;
+    }
+
+    public String getName() {
+        return nombre;
     }
 
     // Setters

@@ -131,7 +131,24 @@ public class CasillaSegura implements Casilla {
      */
     @Override
     public String toString() {
-        return "CasillaSegura (número: " + numero + ")";
+        StringBuilder mensaje = new StringBuilder();
+        if (this.numero == 17) {
+            mensaje.append("CasillaSegura: PasoFinal Azules (número: " + numero + "), Fichas: ");
+        } else if (this.numero == 34) {
+            mensaje.append("CasillaSegura: PasoFinal Rojas (número: " + numero + "), Fichas: ");
+        } else if (this.numero == 51) {
+            mensaje.append("CasillaSegura: PasoFinal Verdes (número: " + numero + "), Fichas: ");
+        } else if (this.numero == 68) {
+            mensaje.append("CasillaSegura: PasoFinal Amarillas (número: " + numero + "), Fichas: ");
+        } else {
+            mensaje.append("CasillaSegura: (número: " + numero + "), Fichas: ");
+        }
+
+        for (Ficha ficha : this.fichas) {
+            mensaje.append(ficha.getName() + ", ");
+        }
+
+        return mensaje.toString();
     }
     
     @Override
