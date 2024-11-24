@@ -11,15 +11,15 @@ import org.junit.jupiter.api.Test;
 
 public class GameControllerTest {
     private Game game;
-    private GameController game_controller;
     // DESCOMENTAR CUANDO SE IMPLEMENTE LA CLASE
     // private GameView game_view;
+    private GameController game_controller;
 
     @BeforeEach
     void setUp() {
         game = new Game();
-        game_controller = new GameController(game);
         // game_view = mock(GameView.class);
+        game_controller = new GameController(game);
     }
 
     @Test
