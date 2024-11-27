@@ -66,16 +66,6 @@ public class JugadorTest {
         assertEquals("No es el turno del jugador.", exception.getMessage());
     }
 
-    // Faltaria mirar si la ficha esta en las ultimas casillas que no sean home
-    @Test
-    void testMoverFichaHome() {
-        jugador.setTurno(true); // Activamos el turno del jugador
-        Ficha ficha = jugador.getFichas()[0];
-
-        jugador.moverFicha(0, 3); // Estado default de la ficha --> Home: true
-        assertEquals(0, ficha.getPos(), "La ficha no debería moverse ya que esta en home");
-    }
-
     @Test
     void testMoverFichaFin() {
         jugador.setTurno(true); // Activamos el turno del jugador

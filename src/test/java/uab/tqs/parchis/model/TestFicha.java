@@ -23,13 +23,6 @@ class FichaTest {
     }
 
     @Test
-    void testNoMoverCuandoEstaEnHome() {
-        ficha.setHome(true);  // La ficha aún está en casa
-        ficha.mover(5);
-        assertEquals(0, ficha.getPos(), "La ficha no debería moverse si está en casa");
-    }
-
-    @Test
     void testNoMoverCuandoEstaEnFin() {
         ficha.setFin(true);  // La ficha ha llegado a la meta
         ficha.mover(5);

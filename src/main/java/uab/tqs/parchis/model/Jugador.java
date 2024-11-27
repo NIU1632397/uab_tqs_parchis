@@ -20,7 +20,7 @@ public class Jugador {
         this.color = color;
         this.fichas = new Ficha[4]; // Inicialización fichas
         for (int i = 0; i < 4; i++) {
-            fichas[i] = new Ficha(color + i); 
+            fichas[i] = new Ficha(color + i, color); 
         }
     }
 

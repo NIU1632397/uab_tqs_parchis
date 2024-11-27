@@ -2,7 +2,9 @@ package uab.tqs.parchis.view;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -56,5 +58,21 @@ public class GameViewTest {
         assertTrue(salida.contains("CasillaNormal"), "No hay casilla normal");
         assertTrue(salida.contains("CasillaSegura"), "No hay casilla segura");
         assertTrue(salida.contains("CasillaFinal"), "No hay casilla final");
+    }
+
+    @Test
+    public void testEsperarRespuesta() {
+        // Simular entrada de usuario
+        String simulatedInput = "42\n";
+        InputStream originalIn = System.in;
+        try {
+            System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+            int resultado = game_view.esperarRespuesta();
+            assertEquals(42, resultado);
+
+        } finally {
+            System.setIn(originalIn);
+        }
     }
 }
