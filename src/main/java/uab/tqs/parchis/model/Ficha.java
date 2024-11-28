@@ -4,6 +4,9 @@ public class Ficha {
     private int pos;
     private boolean home;
     private boolean fin;
+    private String nombre;
+    private boolean estaFinal;
+    private String color;
 
     /**
      * Constructor por defecto: la ficha inicia en casa (home = true) y fuera de la meta (fin = false).
@@ -12,6 +15,18 @@ public class Ficha {
         this.pos = 0;
         this.home = true; 
         this.fin = false;
+        this.nombre = "";
+        this.estaFinal = false;
+        this.color = "";
+    }
+
+    public Ficha(String nombre, String color) {
+        this.pos = 0;
+        this.home = true; 
+        this.fin = false;
+        this.nombre = nombre;
+        this.estaFinal = false;
+        this.color = color;
     }
 
     /**
@@ -32,8 +47,11 @@ public class Ficha {
             throw new IllegalArgumentException("El número de pasos debe ser no negativo.");
         }
 
-        if (!home && !fin) {
+        if (!fin) {
             pos += pasos;
+            if (pos > 68) {
+                pos = pos-68;
+            }
         }
     }
 
@@ -50,6 +68,18 @@ public class Ficha {
         return fin;
     }
 
+    public String getName() {
+        return nombre;
+    }
+
+    public boolean getEstaFinal() {
+        return estaFinal;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
     // Setters
     public void setPos(int pos) {
         this.pos = pos;
@@ -61,5 +91,9 @@ public class Ficha {
 
     public void setFin(boolean fin) {
         this.fin = fin;
+    }
+
+    public void setEstaFinal(boolean estaFinal) {
+        this.estaFinal = estaFinal;
     }
 }

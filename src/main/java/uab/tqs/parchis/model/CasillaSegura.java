@@ -117,6 +117,40 @@ public class CasillaSegura implements Casilla {
      * 
      * @param ficha Ficha a agregar.
      */
+
+    /**
+     * Devuelve una representación en texto de una casilla segura.
+     * 
+     * Precondiciones:
+     * - Ninguna.
+     * 
+     * Postcondiciones:
+     * - Devuelve un texto con el número de la casilla indicando que es una casilla segura.
+     * 
+     * @return Representación textual de la casilla segura.
+     */
+    @Override
+    public String toString() {
+        StringBuilder mensaje = new StringBuilder();
+        if (this.numero == 17) {
+            mensaje.append("CasillaSegura: PasoFinal Azules (número: " + numero + "), Fichas: ");
+        } else if (this.numero == 34) {
+            mensaje.append("CasillaSegura: PasoFinal Rojas (número: " + numero + "), Fichas: ");
+        } else if (this.numero == 51) {
+            mensaje.append("CasillaSegura: PasoFinal Verdes (número: " + numero + "), Fichas: ");
+        } else if (this.numero == 68) {
+            mensaje.append("CasillaSegura: PasoFinal Amarillas (número: " + numero + "), Fichas: ");
+        } else {
+            mensaje.append("CasillaSegura: (número: " + numero + "), Fichas: ");
+        }
+
+        for (Ficha ficha : this.fichas) {
+            mensaje.append(ficha.getName() + ", ");
+        }
+
+        return mensaje.toString();
+    }
+    
     @Override
     public void agregarFicha(Ficha ficha) {
         if (ficha == null) {

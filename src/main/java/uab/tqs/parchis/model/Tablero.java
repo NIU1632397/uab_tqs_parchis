@@ -109,7 +109,7 @@ public class Tablero {
             throw new IllegalArgumentException("El número de casilla debe estar entre 1 y 68.");
         }
 
-        int[] casillasSeguras = {5, 12, 17, 24, 29, 36, 41, 48};
+        int[] casillasSeguras = {5, 12, 17, 22, 29, 34, 39, 46, 51, 56, 63, 68};
         for (int segura : casillasSeguras) {
             if (numero == segura) {
                 return true;
@@ -134,6 +134,36 @@ public class Tablero {
     }
 
     /**
+     * Devuelve una representación en texto del tablero, incluyendo las casillas
+     * principales y finales.
+     * 
+     * Precondiciones:
+     * - Ninguna.
+     * 
+     * Postcondiciones:
+     * - Devuelve un texto que describe el estado del tablero principal y del tablero final.
+     * 
+     * @return Representación textual del tablero.
+     */
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        // Representación del tablero principal
+        sb.append("Tablero Principal:\n");
+        for (Casilla casilla : tablero) {
+            sb.append(casilla.toString()).append("\n");
+        }
+    
+        // Representación del tablero final
+        sb.append("\nTablero Final:\n");
+        for (Casilla casilla : tablero_final) {
+            sb.append(casilla.toString()).append("\n");
+        }
+    
+        return sb.toString();
+    }
+
+    /**
      * Devuelve todas las casillas del tablero final.
      * 
      * Precondiciones:
@@ -152,7 +182,7 @@ public class Tablero {
      * Obtiene una casilla del tablero principal por su número.
      * 
      * Precondiciones:
-     * - `numero` debe estar entre 0 y 68.
+     * - `numero` debe estar entre 1 y 68.
      * 
      * Postcondiciones:
      * - Devuelve la casilla correspondiente si existe.
@@ -161,11 +191,32 @@ public class Tablero {
      * @param numero Número de la casilla.
      * @return La casilla correspondiente.
      */
-    public Casilla getCasilla(int numero) {
+    public Casilla getCasillaTablero(int numero) {
         if (numero < 0 || numero >= tablero.size()) {
             throw new IndexOutOfBoundsException("El número de casilla está fuera de rango.");
         }
 
         return this.tablero.get(numero);
+    }
+
+    /**
+     * Obtiene una casilla del tablero final por su número.
+     * 
+     * Precondiciones:
+     * - `numero` debe estar entre 0 y 8.
+     * 
+     * Postcondiciones:
+     * - Devuelve la casilla correspondiente si existe.
+     * - Lanza una excepción si el número es inválido.
+     * 
+     * @param numero Número de la casilla.
+     * @return La casilla correspondiente.
+     */
+    public Casilla getCasillaTableroFinal(int numero) {
+        if (numero < 0 || numero >= tablero_final.size()) {
+            throw new IndexOutOfBoundsException("El número de casilla está fuera de rango.");
+        }
+
+        return this.tablero_final.get(numero);
     }
 }

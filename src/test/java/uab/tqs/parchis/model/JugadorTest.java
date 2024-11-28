@@ -21,9 +21,17 @@ public class JugadorTest {
 
     @Test
     void testIniciarConCuatroFichas() {
-        // assertEquals(4, jugador.getFichas().length(), "El jugador debe iniciar con 4 fichas");
+        // assertEquals(4, jugador.getFichas().length, "El jugador debe iniciar con 4 fichas");
         // Test no va ja que no hay instancias de fichas
         // deberiamos crear mock object para poder probar este test correctamente
+    }
+
+    @Test
+    void testNombreFichas() {
+        Ficha[] fichas = jugador.getFichas();
+        for (int i = 0; i < fichas.length; i++) {
+            assertEquals("rojo"+i, fichas[i].getName(), "El nombre de las fichas no es correcto");
+        }
     }
 
     @Test
@@ -56,16 +64,6 @@ public class JugadorTest {
 
         Exception exception = assertThrows(IllegalStateException.class, () -> jugador.moverFicha(0, 3));
         assertEquals("No es el turno del jugador.", exception.getMessage());
-    }
-
-    // Faltaria mirar si la ficha esta en las ultimas casillas que no sean home
-    @Test
-    void testMoverFichaHome() {
-        jugador.setTurno(true); // Activamos el turno del jugador
-        Ficha ficha = jugador.getFichas()[0];
-
-        jugador.moverFicha(0, 3); // Estado default de la ficha --> Home: true
-        assertEquals(0, ficha.getPos(), "La ficha no debería moverse ya que esta en home");
     }
 
     @Test

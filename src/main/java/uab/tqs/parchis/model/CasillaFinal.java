@@ -103,6 +103,26 @@ public class CasillaFinal implements Casilla {
     }
 
     /**
+     * Devuelve una representación en texto de una casilla final.
+     * 
+     * Precondiciones:
+     * - Ninguna.
+     * 
+     * Postcondiciones:
+     * - Devuelve un texto con el número de la casilla indicando que es una casilla final.
+     * 
+     * @return Representación textual de la casilla final.
+     */
+    @Override
+    public String toString() {
+        StringBuilder mensaje = new StringBuilder("CasillaFinal: (número: " + numero + "), Fichas: ");
+        for (Ficha ficha : this.fichas) {
+            mensaje.append(ficha.getName() + ", ");
+        }
+        return mensaje.toString();
+    }
+
+    /**
      * Agrega una ficha a la casilla.
      * 
      * Precondiciones:

@@ -66,6 +66,19 @@ public interface Casilla {
     List<Ficha> getFichas();
 
     /**
+     * Devuelve una representación en texto de una casilla.
+     * 
+     * Precondiciones:
+     * - Ninguna.
+     * 
+     * Postcondiciones:
+     * - Devuelve un texto con el número de la casilla indicando que es una casilla.
+     * 
+     * @return Representación textual de la casilla.
+     */
+    String toString();
+
+    /**
      * Agrega una ficha a la casilla.
      * 
      * Precondiciones:
