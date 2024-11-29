@@ -1,5 +1,14 @@
 package uab.tqs.parchis.model;
 
+/**
+ * Clase que representa a un jugador en el juego de Parchís.
+ * 
+ * Contrato general:
+ * - Un jugador tiene un nombre y un color que deben ser válidos (no nulos ni vacíos).
+ * - Cada jugador controla exactamente 4 fichas.
+ * - El turno del jugador puede cambiar dinámicamente.
+ * - Las fichas del jugador solo se pueden mover si es su turno.
+ */
 public class Jugador {
     private String nombre;
     private String color;
