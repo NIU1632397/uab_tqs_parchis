@@ -97,5 +97,29 @@ public class JugadorTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> new Jugador("pablo", null));
         assertEquals("El color no puede ser nulo o estar vacio.", exception.getMessage());
     }
+
+    @Test
+    void testMoverCercaDelFinal() {
+        Ficha ficha = jugador.getFichas()[0];
+        ficha.setPos(67);  // Colocamos la ficha cerca del final
+        ficha.mover(2);    // Intentamos moverla 2 pasos
+        assertEquals(1, ficha.getPos(), "La ficha debería volver al inicio del tablero después de pasar la posición 68.");
+    }
+
+    @Test
+    void testMoverMasDe68Pasos() {
+        Ficha ficha = jugador.getFichas()[0];
+        ficha.setPos(68);  // Colocamos la ficha en la posición 68
+        ficha.mover(5);    // Intentamos moverla 5 pasos
+        assertEquals(5, ficha.getPos(), "La ficha debería volver a la posición 5 después de pasar la posición 68.");
+    }
+
+    @Test
+    void testNoMoverCuandoEstaEnMeta() {
+        Ficha ficha = jugador.getFichas()[0];
+        ficha.setFin(true);  // La ficha ha llegado a la meta
+        ficha.mover(5);      // Intentamos moverla
+        assertEquals(0, ficha.getPos(), "La ficha no debería moverse si ya ha llegado a la meta.");
+    }
 }
 
