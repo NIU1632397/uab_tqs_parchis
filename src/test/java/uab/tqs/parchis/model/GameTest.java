@@ -13,10 +13,6 @@ class GameTest {
         game = new Game();
     }
 
-    /**
-     * Test de inicialización del modelo. 
-     * Caja negra: Verifica que el modelo se inicializa con el estado esperado.
-     */
     @Test
     void testInicializacionModelo() {
         assertNotNull(game.getTablero(), "El tablero debería inicializarse.");
@@ -25,10 +21,6 @@ class GameTest {
         assertNotNull(game.getDado(), "El dado debería inicializarse.");
     }
 
-    /**
-     * Test para agregar jugadores válidos.
-     * Caja negra: Agregar hasta 4 jugadores correctamente.
-     */
     @Test
     void testAgregarJugadoresValidos() {
         game.agregarJugador("Jugador 1", "amarillo");
@@ -39,6 +31,20 @@ class GameTest {
         assertEquals(4, game.getJugadores().size(), "Debería haber 4 jugadores en la lista.");
         assertEquals("Jugador 1", game.getJugadores().get(0).getNombre());
         assertEquals("amarillo", game.getJugadores().get(0).getColor());
+    }
+
+    @Test
+    void testAgregarJugadorExcedeLimite() {
+        game.agregarJugador("Jugador 1", "amarillo");
+        game.agregarJugador("Jugador 2", "azul");
+        game.agregarJugador("Jugador 3", "rojo");
+        game.agregarJugador("Jugador 4", "verde");
+
+        Exception exception = assertThrows(IllegalStateException.class, () -> {
+            game.agregarJugador("Jugador 5", "morado");
+        });
+
+        assertEquals("El máximo número de jugadores es 4.", exception.getMessage());
     }
 
     @Test
