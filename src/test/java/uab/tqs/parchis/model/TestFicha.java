@@ -44,7 +44,15 @@ class FichaTest {
     @Test
     void testMoverPasosNegativosLanzaExcepcion() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            ficha.mover(-3);
+            ficha.mover(-1);
+        });
+        assertEquals("El número de pasos debe ser no negativo.", exception.getMessage());
+    }
+
+    @Test
+    void testMoverPasosNegativosLanzaExcepcionLimite() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            ficha.mover(-1);
         });
         assertEquals("El número de pasos debe ser no negativo.", exception.getMessage());
     }
