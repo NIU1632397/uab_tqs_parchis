@@ -19,7 +19,7 @@ public class GameControllerTest {
 
     @BeforeEach
     void setUp() {
-        game = mock(Game.class);
+        game = new Game();
         game_view = mock(GameView.class);
         game_controller = new GameController(game, game_view);
     }

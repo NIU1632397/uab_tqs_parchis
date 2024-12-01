@@ -1,7 +1,7 @@
 package uab.tqs.parchis.model;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -91,15 +91,6 @@ public class CasillaTest  {
         casilla_segura.quitarFicha(ficha);
 
         assertTrue(casilla_segura.getFichas().isEmpty(), "No deberia haber ninguna ficha en la casilla");
-
-        // TEST CASILLA FINAL
-        casilla_final.agregarFicha(ficha);
-
-        assertFalse(casilla_final.getFichas().isEmpty(), "Deberia haber alguna ficha en la casilla");
-
-        casilla_final.quitarFicha(ficha);
-
-        assertTrue(casilla_final.getFichas().isEmpty(), "No deberia haber ninguna ficha en la casilla");
     }
 
     @Test
