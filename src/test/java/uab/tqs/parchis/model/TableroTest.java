@@ -19,6 +19,7 @@ public class TableroTest {
         assertEquals(8, tablero.getTableroFinal().size(), "El final del tablero deberia ser de 8 casillas");
 
         assertThrows(IndexOutOfBoundsException.class, () -> tablero.getCasillaTablero(70));
+        assertThrows(IndexOutOfBoundsException.class, () -> tablero.getCasillaTablero(-1));
     }
 
     @Test
@@ -34,4 +35,21 @@ public class TableroTest {
         assertEquals(5, tablero.getCasillaTablero(5).getNumero(), "La casilla deberia ser la 5, casilla segura");
     }
 
+    @Test
+    void testCasillasSeguras() {
+        int[] seguras = {5, 12, 17, 22, 29, 34, 39, 46, 51, 56, 63, 68};
+        for (int numero : seguras) {
+            assertTrue(tablero.getCasillaTablero(numero).getSeguro(), "La casella " + numero + " ha de ser segura.");
+        }
+    }
+
+    @Test
+    void testLoopTestingInicializarTablero() {
+        for (int i = 0; i < 69; i++) {
+            assertNotNull(tablero.getCasillaTablero(i), "La casella " + i + " ha d'existir al tauler principal.");
+        }
+        for (int i = 1; i <= 8; i++) {
+            assertNotNull(tablero.getCasillaTableroFinal(i - 1), "La casella " + i + " ha d'existir al tauler final.");
+        }
+    }
 }
