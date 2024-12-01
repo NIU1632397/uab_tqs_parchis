@@ -37,6 +37,18 @@ public class GameControllerTest {
         verify(game_view).mostrarMensaje("Juego inicializado correctamente.");
     }
 
+    void testIniciarJuegoMax() {
+        // Más de 4 jugadores: caso inválido
+        String[] jugadores = {"Jugador 1", "Jugador 2", "Jugador 3", "Jugador 4", "Jugador 5"};
+        String[] colores = {"Azul", "Amarillo", "Verde", "Rojo", "Violeta"};
+    
+        game_controller.iniciarJuego(jugadores, colores);
+    
+        // Verificar que no se agregan jugadores y se muestra un error
+        assertEquals(0, game.getJugadores().size(), "No se deben inicializar jugadores si exceden el límite.");
+        verify(game_view).mostrarError("Debe haber entre 2 y 4 jugadores con colores únicos.");
+    }
+
     @Test
     void testLanzarDado() {
         String[] jugadores = {"Jugador 1", "Jugador 2"};

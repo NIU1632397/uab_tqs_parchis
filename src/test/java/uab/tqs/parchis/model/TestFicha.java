@@ -77,4 +77,42 @@ class FichaTest {
         ficha.mover(5);     
         assertEquals(0, ficha.getPos(), "La ficha no debería moverse si ya ha llegado a la meta.");
     }
+    
+    @Test
+    void testPairwiseMover() {
+        // Caso 1: home = true, fin = false, pasos = 0
+        ficha.setHome(true);
+        ficha.setFin(false);
+        ficha.setPos(0);
+        ficha.mover(0);
+        assertEquals(0, ficha.getPos(), "La ficha no debería moverse si está en casa.");
+
+        // Caso 2: home = true, fin = true, pasos = 5
+        ficha.setHome(true);
+        ficha.setFin(true);
+        ficha.setPos(0);
+        ficha.mover(5);
+        assertEquals(0, ficha.getPos(), "La ficha no debería moverse si está en casa y en la meta.");
+
+        // Caso 3: home = false, fin = false, pasos = 70
+        ficha.setHome(false);
+        ficha.setFin(false);
+        ficha.setPos(0);
+        ficha.mover(70);
+        assertEquals(2, ficha.getPos(), "La posición debe ajustarse circularmente si supera el tablero.");
+
+        // Caso 4: home = false, fin = true, pasos = 0
+        ficha.setHome(false);
+        ficha.setFin(true);
+        ficha.setPos(10);
+        ficha.mover(0);
+        assertEquals(10, ficha.getPos(), "La posición no debe cambiar si la ficha está en la meta.");
+
+        // Caso 5: home = false, fin = false, pasos = 5
+        ficha.setHome(false);
+        ficha.setFin(false);
+        ficha.setPos(0);
+        ficha.mover(5);
+        assertEquals(5, ficha.getPos(), "La ficha debería moverse correctamente si no está en casa ni en la meta.");
+    }
 }
