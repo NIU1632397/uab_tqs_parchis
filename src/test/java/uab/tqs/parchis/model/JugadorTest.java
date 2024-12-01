@@ -56,12 +56,29 @@ public class JugadorTest {
     }
 
     @Test
-    void testMoverFichaFueraDeTurnoLanzaExcepcion() {
+    void testMoverFichaLanzaExcepcion() {
+        // Caso 1: Índice fuera de rango
+        Exception exception1 = assertThrows(IllegalArgumentException.class, () -> jugador.moverFicha(-1, 3));
+        assertEquals("Índice de ficha fuera de rango.", exception1.getMessage());
+
+        Exception exception2 = assertThrows(IllegalArgumentException.class, () -> jugador.moverFicha(4, 3)); // Índice > 3
+        assertEquals("Índice de ficha fuera de rango.", exception2.getMessage());
+
+        // Caso 2: Número de pasos negativo
+        Exception exception3 = assertThrows(IllegalArgumentException.class, () -> jugador.moverFicha(0, -3));
+        assertEquals("El número de pasos no puede ser negativo.", exception3.getMessage());
+
+        // Caso 3: No es el turno del jugador
         Ficha ficha = jugador.getFichas()[0];
         ficha.setHome(false); // La ficha ha salido de casa
+        Exception exception4 = assertThrows(IllegalStateException.class, () -> jugador.moverFicha(0, 3));
+        assertEquals("No es el turno del jugador.", exception4.getMessage());
 
-        Exception exception = assertThrows(IllegalStateException.class, () -> jugador.moverFicha(0, 3));
-        assertEquals("No es el turno del jugador.", exception.getMessage());
+        // Caso 4: Movimiento válido
+        jugador.setTurno(true); // Activamos el turno del jugador
+        ficha.setHome(false);   // La ficha ha salido de casa
+        jugador.moverFicha(0, 3); // Movemos la ficha con índice 0 tres pasos
+        assertEquals(3, ficha.getPos(), "La ficha debería estar en la posición 3 después de moverse");
     }
 
     @Test
@@ -124,4 +141,3 @@ public class JugadorTest {
         assertEquals(0, ficha.getPos(), "La ficha no debería moverse si ya ha llegado a la meta.");
     }
 }
-
