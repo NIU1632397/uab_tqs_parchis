@@ -26,6 +26,8 @@ public class CasillaTest  {
 
         // TEST CASILLA FINAL
         casilla_final = mock(CasillaFinal.class);
+        when(casilla_final.getNumero()).thenReturn(4);
+        when(casilla_final.getSeguro()).thenReturn(true);
     }
 
     @Test
