@@ -1,6 +1,7 @@
 package uab.tqs.parchis.model;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +25,7 @@ public class CasillaTest  {
         casilla_segura = new CasillaSegura(5);
 
         // TEST CASILLA FINAL
-        casilla_final = new CasillaFinal(4);
+        casilla_final = mock(CasillaFinal.class);
     }
 
     @Test

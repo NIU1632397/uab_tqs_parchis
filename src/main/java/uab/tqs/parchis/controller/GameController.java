@@ -108,7 +108,7 @@ public class GameController {
     public void empezarTurno() {
         Jugador jugador_actual = game.getJugadorActual();
 
-        game_view.mostrarMensaje("El jugador " + jugador_actual.getNombre() + "lanza el dado.");
+        game_view.mostrarMensaje("El jugador " + jugador_actual.getNombre() + ", color " + jugador_actual.getColor() + ", lanza el dado.");
         int valor_dado = lanzarDado();
 
         game_view.mostrarMensaje("¿Que ficha desea mover? Las respuestas pueden ser 0, 1, 2 o 3.");
@@ -116,11 +116,21 @@ public class GameController {
 
         Ficha ficha = jugador_actual.getFichas()[respuesta];
 
-        if (ficha.getPos() == 0 && valor_dado == 5){
-            movimientoInicial(ficha);
-        } else {
-            moverFicha(ficha, valor_dado);
+        if (ficha.getPos() == 0) {
+            if (valor_dado == 5) {
+                game_view.mostrarMensaje("Movimiento inicial de la ficha.");
+                movimientoInicial(ficha);
+                avanzarTurno();
+                return;
+            } else {
+                game_view.mostrarMensaje("La ficha no se ha movido de casa.");
+                avanzarTurno();
+                return;
+            }
         }
+
+        game_view.mostrarMensaje("Moviendo la ficha.");
+        moverFicha(ficha, valor_dado);
 
         avanzarTurno();
     }
@@ -162,7 +172,6 @@ public class GameController {
         }
 
         casilla_casa.quitarFicha(ficha);
-        actualizarVista();
     }
 
     /**
@@ -271,7 +280,6 @@ public class GameController {
 
             iterador_posicion++;
         }
-        actualizarVista();
     }
 
     /**
