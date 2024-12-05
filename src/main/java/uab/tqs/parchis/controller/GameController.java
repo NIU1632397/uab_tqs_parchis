@@ -28,7 +28,7 @@ public class GameController {
         this.game_view = game_view;
     }
 
-      /**
+    /**
      * Inicializa el juego con los jugadores y colores proporcionados.
      * Precondiciones:
      * - `jugadores` y `colores` no deben ser nulos.
@@ -95,7 +95,7 @@ public class GameController {
         actualizarVista();
     }
 
-     /**
+    /**
      * Comienza el turno del jugador actual, lanzando el dado y moviendo una ficha.
      * Precondiciones:
      * - El jugador actual debe tener al menos una ficha en casa (para poder moverla).
